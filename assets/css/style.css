@@ -872,6 +872,75 @@ section {
   background: #2db6fa;
 }
 
+.services .service-box.mint {
+  border-bottom: 3px solid #01b597;
+}
+
+.services .service-box.mint .icon {
+  color: #01b597;
+  background: #c7f8f0;
+}
+
+.services .service-box.mint .read-more {
+  color: #01b597;
+}
+
+.services .service-box.mint:hover {
+  background: #01b597;
+}
+
+.services .service-box.yellow {
+  border-bottom: 3px solid #c8bd47;
+}
+
+.services .service-box.yellow .icon {
+  color: #c8bd47;
+  background: #fff9b4;
+}
+
+.services .service-box.yellow .read-more {
+  color: #c8bd47;
+}
+
+.services .service-box.yellow:hover {
+  background: #c8bd47;
+}
+
+.services .service-box.darkBlue {
+  border-bottom: 3px solid #00425a;
+}
+
+.services .service-box.darkBlue .icon {
+  color: #00425a;
+  background: #cbe9f4;
+}
+
+.services .service-box.darkBlue.read-more {
+  color: #00425a;
+}
+
+.services .service-box.darkBlue:hover {
+  background: #00425a;
+}
+
+
+.services .service-box.move {
+  border-bottom: 3px solid #5e0061;
+}
+
+.services .service-box.move .icon {
+  color: #5e0061;
+  background: #fbd8fc;
+}
+
+.services .service-box.move .read-more {
+  color: #5e0061;
+}
+
+.services .service-box.move:hover {
+  background: #5e0061;
+}
+
 .services .service-box.orange {
   border-bottom: 3px solid #f68c09;
 }
@@ -890,20 +959,20 @@ section {
 }
 
 .services .service-box.green {
-  border-bottom: 3px solid #08da4e;
+  border-bottom: 3px solid #459f63;
 }
 
 .services .service-box.green .icon {
-  color: #08da4e;
+  color: #459f63;
   background: #cffddf;
 }
 
 .services .service-box.green .read-more {
-  color: #08da4e;
+  color: #459f63;
 }
 
 .services .service-box.green:hover {
-  background: #08da4e;
+  background: #459f63;
 }
 
 .services .service-box.red {
