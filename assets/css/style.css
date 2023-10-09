@@ -134,7 +134,7 @@ section {
   visibility: hidden;
   opacity: 0;
   right: 15px;
-  bottom: 15px;
+  bottom: 70px;
   z-index: 99999;
   background: #4154f1;
   width: 40px;
@@ -142,7 +142,19 @@ section {
   border-radius: 4px;
   transition: all 0.4s;
 }
-
+.start {
+  position: fixed;
+  visibility: visible;
+  opacity: 1;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: #4154f1;
+  color: #fff;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
 .back-to-top i {
   font-size: 24px;
   color: #fff;
@@ -159,6 +171,34 @@ section {
   opacity: 1;
 }
 
+.start:hover {
+  background: #6776f4;
+  color: #fff;
+}
+
+
+@media (max-width: 1200px) {
+  .start{
+    display: flex;
+  }
+}
+
+@media (min-width: 1201px) {
+  .start{
+    display: none;
+  }
+  .back-to-top {
+    bottom: 15px !important;
+  }
+}
+
+.bg-start{
+  background: #4154f1;
+}
+
+.bg-start:hover{
+  background: #6776f4;
+}
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/

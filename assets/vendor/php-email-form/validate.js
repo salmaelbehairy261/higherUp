@@ -15,7 +15,6 @@
       let thisForm = this;
 
       let action = thisForm.getAttribute('action');
-      let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
       if( ! action ) {
         displayError(thisForm, 'The form action property is not set!');
@@ -24,32 +23,20 @@
       thisForm.querySelector('.loading').classList.add('d-block');
       thisForm.querySelector('.error-message').classList.remove('d-block');
       thisForm.querySelector('.sent-message').classList.remove('d-block');
-
-      let formData = new FormData( thisForm );
-
-      if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
-          grecaptcha.ready(function() {
-            try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
-              .then(token => {
-                formData.set('recaptcha-response', token);
-                php_email_form_submit(thisForm, action, formData);
-              })
-            } catch(error) {
-              displayError(thisForm, error);
-            }
-          });
-        } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
-        }
-      } else {
-        php_email_form_submit(thisForm, action, formData);
+      let name=thisForm.querySelector('#name').value
+      let companyName=thisForm.querySelector('#companyName').value
+      let email=thisForm.querySelector('#email').value
+      let phone=thisForm.querySelector('#phone').value
+      if(name && companyName && email && phone){
+        let formData = new FormData( thisForm );
+        email_form_submit(thisForm, action, formData);
+      }else{
+        displayError(thisForm, 'Please Enter All Required Information')
       }
     });
   });
 
-  function php_email_form_submit(thisForm, action, formData) {
+  function email_form_submit(thisForm, action, formData) {
     fetch(action, {
       method: 'POST',
       body: formData,
@@ -72,7 +59,17 @@
       }
     })
     .catch((error) => {
-      displayError(thisForm, error);
+      error=error.toString()
+      const startIndex = error.indexOf('{');
+      const endIndex = error.lastIndexOf('}') + 1;
+      const json = error.substring(startIndex, endIndex);
+      const parsedError = JSON.parse(json);
+      const okValue = parsedError.ok;
+      if(okValue==true){
+        thisForm.reset()
+        thisForm.querySelector('.loading').classList.remove('d-block');
+        thisForm.querySelector('.sent-message').classList.add('d-block');
+      }
     });
   }
 
