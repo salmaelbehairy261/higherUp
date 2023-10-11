@@ -134,7 +134,7 @@ section {
   visibility: hidden;
   opacity: 0;
   right: 15px;
-  bottom: 70px;
+  bottom: 15px;
   z-index: 99999;
   background: #4154f1;
   width: 40px;
@@ -142,19 +142,7 @@ section {
   border-radius: 4px;
   transition: all 0.4s;
 }
-.start {
-  position: fixed;
-  visibility: visible;
-  opacity: 1;
-  right: 15px;
-  bottom: 15px;
-  z-index: 99999;
-  background: #4154f1;
-  color: #fff;
-  height: 40px;
-  border-radius: 4px;
-  transition: all 0.4s;
-}
+
 .back-to-top i {
   font-size: 24px;
   color: #fff;
@@ -171,33 +159,34 @@ section {
   opacity: 1;
 }
 
+.start {
+  position: -webkit-sticky;
+  position: sticky;
+  visibility:hidden;
+  display: flex;
+  top:60px;
+  z-index: 99999;
+  background: #4154f1;
+  color: #fff;
+  height: 50px;
+  transition:top 0.5s;
+  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+}
 .start:hover {
   background: #6776f4;
   color: #fff;
 }
-
-
-@media (max-width: 1200px) {
+.show{
+  visibility: visible;
+  top:70px;
+}
+@media (max-width:1200px) {
   .start{
-    display: flex;
+    top:55px;
   }
-}
-
-@media (min-width: 1201px) {
-  .start{
-    display: none;
+  .show{
+    top:65px;
   }
-  .back-to-top {
-    bottom: 15px !important;
-  }
-}
-
-.bg-start{
-  background: #4154f1;
-}
-
-.bg-start:hover{
-  background: #6776f4;
 }
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -1634,14 +1623,25 @@ section {
 /*--------------------------------------------------------------
 # Clients
 --------------------------------------------------------------*/
-.clients .clients-slider .swiper-slide img {
+.clients .clients-slider .swiper-slide {
   opacity: 0.5;
   transition: 0.3s;
-  max-height: 7em;
 }
 
-.clients .clients-slider .swiper-slide img:hover {
+.clients .clients-slider .swiper-slide p {
+  text-align: center;
+}
+
+.clients .clients-slider .swiper-slide:hover {
   opacity: 1;
+}
+
+.clientDesc{
+  transition: 0.5s;
+}
+
+.swp-img{
+  height: 10em;
 }
 
 .clients .clients-slider .swiper-pagination {

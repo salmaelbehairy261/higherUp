@@ -92,6 +92,35 @@
     onscroll(document, headerScrolled)
   }
 
+  let start = document.getElementsByClassName('start')
+  if (start) {
+    const startScrolled = () => {
+      for(let i=0;i<start.length;i++){
+      if(window.innerWidth>1200){
+        if (start[i].getBoundingClientRect().top>=60 && start[i].getBoundingClientRect().top<71) {
+          start[i].classList.add('show')
+          if(i!=0 && start[i-1].classList.contains('show')){
+            start[i-1].classList.remove('show')
+          }
+        } else {
+          start[i].classList.remove('show')
+        }
+      }else{
+        if (start[i].getBoundingClientRect().top>=55 && start[i].getBoundingClientRect().top<66) {
+          start[i].classList.add('show')
+          if(i!=0 && start[i-1].classList.contains('show')){
+            start[i-1].classList.remove('show')
+          }
+        } else {
+          start[i].classList.remove('show')
+        }
+        }
+      }
+    }
+    window.addEventListener('load', startScrolled)
+    onscroll(document, startScrolled)
+  }
+
   /**
    * Back to top button
    */
@@ -173,24 +202,39 @@
     },
     breakpoints: {
       320: {
-        slidesPerView: 2,
+        slidesPerView: 1,
         spaceBetween: 40
       },
       480: {
-        slidesPerView: 3,
+        slidesPerView: 2,
         spaceBetween: 60
       },
       640: {
-        slidesPerView: 4,
+        slidesPerView: 3,
         spaceBetween: 80
       },
       992: {
-        slidesPerView: 5,
-        spaceBetween: 120
+        slidesPerView: 3,
+        spaceBetween: 100
       }
     }
   });
 
+  /*let slides=document.getElementsByClassName('client')
+  function displayText(index){
+    slides[index].getElementsByClassName('clientDesc')[0].classList.remove('d-none')
+  }
+  function hideText(index){
+    slides[index].getElementsByClassName('clientDesc')[0].classList.add('d-none')
+  }
+  for(let i=0;i<slides.length;i++){
+    slides[i].addEventListener('mouseenter',function(){
+      displayText(i)
+    })
+    slides[i].addEventListener('mouseleave',function(){
+      hideText(i)
+    })
+  }*/
   /**
    * Porfolio isotope and filter
    */
