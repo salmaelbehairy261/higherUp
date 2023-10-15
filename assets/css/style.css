@@ -133,7 +133,7 @@ section {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  right: 15px;
+  left: 15px;
   bottom: 15px;
   z-index: 99999;
   background: #4154f1;
@@ -160,33 +160,116 @@ section {
 }
 
 .start {
-  position: -webkit-sticky;
-  position: sticky;
-  visibility:hidden;
-  display: flex;
-  top:60px;
+  position: fixed;
+  right: 15px;
+  bottom: 50px;
   z-index: 99999;
-  background: #4154f1;
+  font-weight: bold;
+  text-align: center;
+}
+.start .iconSize{
+  font-size: x-large;
+}
+.start:hover .text{
+  background-color: #4153f1c6;
+}
+.start:hover .icon{
+  background-color: #eae7e7 !important;
+  color: #4154f1;
+}
+.start .icon{
+  background-color: #4154f1;
+  color:#fff;
+  width: 64px;
+  height: 64px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.start .text{
+  z-index: -1 !important;
+  right: 0;
+  bottom: 0;
+  text-wrap: nowrap;
+  background-color: #4154f1;
   color: #fff;
-  height: 50px;
-  transition:top 0.5s;
-  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+  padding-right: 70px !important;
+  opacity: 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.start:hover {
-  background: #6776f4;
-  color: #fff;
+.start.animate .text{
+  animation: textAnim 0.5s ease 0s 1 normal forwards;
+  animation-delay: 1.5s;
 }
-.show{
-  visibility: visible;
-  top:70px;
+.start.animate .icon{
+  animation: colorAnim 0.5s ease 0s 1 normal forwards;
+  animation-delay: 1.5s;
 }
-@media (max-width:1200px) {
-  .start{
-    top:55px;
-  }
-  .show{
-    top:65px;
-  }
+@keyframes colorAnim {
+	0% {
+		background-color: #4154f1;
+	}
+
+	100% {
+		background-color: #fff;
+    color: #4154f1;
+    border: 1px solid #4154f1;
+	}
+}
+@keyframes textAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+.start.animate {
+  animation: myAnim 1s linear 0s 1 normal forwards;
+}
+@keyframes myAnim {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(-250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(-65px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(-28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(-8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
 }
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices

@@ -92,34 +92,13 @@
     onscroll(document, headerScrolled)
   }
 
-  let start = document.getElementsByClassName('start')
-  if (start) {
-    const startScrolled = () => {
-      for(let i=0;i<start.length;i++){
-      if(window.innerWidth>1200){
-        if (start[i].getBoundingClientRect().top>=60 && start[i].getBoundingClientRect().top<71) {
-          start[i].classList.add('show')
-          if(i!=0 && start[i-1].classList.contains('show')){
-            start[i-1].classList.remove('show')
-          }
-        } else {
-          start[i].classList.remove('show')
-        }
-      }else{
-        if (start[i].getBoundingClientRect().top>=55 && start[i].getBoundingClientRect().top<66) {
-          start[i].classList.add('show')
-          if(i!=0 && start[i-1].classList.contains('show')){
-            start[i-1].classList.remove('show')
-          }
-        } else {
-          start[i].classList.remove('show')
-        }
-        }
-      }
-    }
-    window.addEventListener('load', startScrolled)
-    onscroll(document, startScrolled)
+  let start = document.getElementsByClassName('start')[0]
+  function handleScroll(){
+    start.classList.remove('animate')
+    start.offsetWidth
+    start.classList.add('animate')
   }
+  window.addEventListener('scroll', handleScroll);
 
   /**
    * Back to top button
@@ -219,22 +198,6 @@
       }
     }
   });
-
-  /*let slides=document.getElementsByClassName('client')
-  function displayText(index){
-    slides[index].getElementsByClassName('clientDesc')[0].classList.remove('d-none')
-  }
-  function hideText(index){
-    slides[index].getElementsByClassName('clientDesc')[0].classList.add('d-none')
-  }
-  for(let i=0;i<slides.length;i++){
-    slides[i].addEventListener('mouseenter',function(){
-      displayText(i)
-    })
-    slides[i].addEventListener('mouseleave',function(){
-      hideText(i)
-    })
-  }*/
   /**
    * Porfolio isotope and filter
    */
